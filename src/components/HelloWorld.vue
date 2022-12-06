@@ -1,6 +1,29 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>Тут текст який введемо: {{texttt}}</h1>
+    <h1 v-for="(value, i) in todos" :key="i">
+      {{ value.text + " " + i}}
+    </h1>
+    <h2>{{ bhbhb }}</h2>
+<!--    <h2 v-on:click="asfas()">{{ bhbhb }}</h2>-->
+<!--    === -->
+<!--    <h2 @click="asfas()">{{ bhbhb }}</h2>-->
+    <select v-model="bhbhb">
+      <option value="0">vgvgvg</option>
+      <option value="1">vgvgvg</option>
+      <option value="2">vgvgvg</option>
+      <option value="3">vgvgvg</option>
+      <option value="4">vgvgvg</option>
+      <option value="5">vgvgvg</option>
+    </select>
+    <h3 v-if="true">asfasfasf</h3>
+    <h3 v-else-if="false">asfasfasf</h3>
+
+    <h2 v-show="state">Hide</h2>
+
+    <h4 v-for="(name, age, type) of obj"> {{name}} {{age}} {{type}}</h4>
+    <button @click="todos.push({text: 'keke'})"> toggle </button>
+    <input type="text" v-model="texttt">
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -27,6 +50,13 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <div id="app-4">
+      <ol>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ol>
+    </div>
   </div>
 </template>
 
@@ -38,11 +68,39 @@ export default Vue.extend({
   props: {
     msg: String,
   },
+  data: () => {
+    return {
+      texttt: '',
+      state: true,
+      todos: [
+        { text: 'Изучить JavaScript' },
+        { text: 'Изучить Vue' },
+        { text: 'Создать что-нибудь классное' }
+      ],
+      obj: {
+        name: 'kaka',
+        age: 14,
+        type: ['asf', 'asfaf']
+      }
+    }
+  }
 });
+// var app4 = new Vue({
+//   el: '#app-4',
+//   data: {
+//     bhbhb: '2',
+//     todos: [
+//       { text: 'Изучить JavaScript' },
+//       { text: 'Изучить Vue' },
+//       { text: 'Создать что-нибудь классное' }
+//     ]
+//   }
+// })
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
 h3 {
   margin: 40px 0 0;
 }
