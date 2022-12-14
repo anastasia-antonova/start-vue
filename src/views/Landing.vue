@@ -2,14 +2,14 @@
   <section>
     <Aside/>
     <div class="main-box-all">
-      <Header/>
+      <Header :showInput="true" :number1="number1" :number2="number2" @input="nameData = $event"/>
       <div class="main-content basic">
         <Banner/>
         <SliderBottomControls/>
-        <GridBox/>
+        <GridBox :nameProps="nameData"/>
         <Slider/>
       </div>
-      <Footer/>
+      <Footer :number1="number1" :number2="number2"/>
     </div>
   </section>
 </template>
@@ -36,10 +36,11 @@ export default Vue.extend({
     Slider,
     Footer
   },
-  mounted() {
-    console.log('mounted');
-
-  },
+  data: () => ({
+    nameData: '',
+    number1: '+996 705 188 955',
+    number2: '+453 705 188 955'
+  })
 });
 </script>
 

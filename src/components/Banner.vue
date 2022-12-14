@@ -1,5 +1,8 @@
 <template>
   <div class="banner" id="banner">
+    <div class="item-banner" >
+      <img src="${'image/' + value.img }" alt="hjh">
+    </div>
   </div>
 </template>
 

@@ -2,43 +2,7 @@
   <div class="slider">
     <button class="leftButton"></button>
     <div class="box">
-      <div class="item">
-        <img src="../assets/images/img_1.png" alt="hjh">
-        <div class="content-item">
-          <h3>Aаломон сет 1</h3>
-          <p>120 грамм, 8 кусочков</p>
-          <div class="buy">
-            <p class="price">1500 СОМ</p>
-            <button>Хочу!</button>
-          </div>
-        </div>
-
-      </div>
-      <div class="item">
-        <img src="../assets/images/img_1.png" alt="hjh">
-        <div class="content-item">
-          <h3>Филадельфия и
-            лосось сет</h3>
-          <p>120 грамм, 8 кусочков</p>
-          <div class="buy">
-            <p class="price">1500 СОМ</p>
-            <button>Хочу!</button>
-          </div>
-        </div>
-
-      </div>
-      <div class="item">
-        <img src="../assets/images/img_1.png" alt="hjh">
-        <div class="content-item">
-          <h3>Самая большая Филадельфия</h3>
-          <p>120 грамм, 8 кусочков</p>
-          <div class="buy">
-            <p class="price">1500 СОМ</p>
-            <button>Хочу!</button>
-          </div>
-        </div>
-
-      </div>
+      <CardItem v-for="(item, key) in cardsArray" :key="key" :data="item"/>
     </div>
     <button class="rightButton"></button>
   </div>
@@ -46,10 +10,48 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import CardItem from "@/components/common/CardItem.vue";
+import {CardItemInterface} from "@/types/cardItemInterface";
 
 export default Vue.extend({
   name: 'Slider',
-
+  components: {
+    CardItem,
+  },
+  data: () => ({
+    test: '' as any,
+    cardsArray: [] as CardItemInterface[]
+  }),
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      this.cardsArray = [
+        {
+          img: 'img_1',
+          name:"Aаломон сет 1",
+          price: "1000",
+          gram: '1000',
+          peace: '8'
+        },
+        {
+          img: 'img_2',
+          name:"Филадельфия и лосось сет",
+          price: "1200",
+          gram: '2000',
+          peace: '12'
+        },
+        {
+          img: 'img_3',
+          name:"Самая большая Филадельфия",
+          price: "2000",
+          gram: '100',
+          peace: '16'
+        },
+      ];
+    }
+  }
 });
 </script>
 
@@ -72,16 +74,6 @@ export default Vue.extend({
     justify-content: center;
     position: relative;
 
-    .item {
-      padding-bottom: 10px;
-      .content-item {
-        min-height: 180px;
-
-        h3 {
-          min-height: 60px;
-        }
-      }
-    }
   }
 }
 </style>

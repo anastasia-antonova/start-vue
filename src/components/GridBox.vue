@@ -1,7 +1,7 @@
 <template>
   <div class="grid-box">
     <div class="grid-body desktop">
-      <div class="grid-item column_span_2 grid-item-1"><p>Чикен</p></div>
+      <div class="grid-item column_span_2 grid-item-1"><p>{{nameProps}}</p></div>
       <div class="grid-item grid-item-2"><p>С угрем</p></div>
       <div class="grid-item grid-item-3"><p>Корн дог</p></div>
       <div class="grid-item column_span_2 grid-item-4"><p>Пицца</p></div>
@@ -15,7 +15,9 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'GridBox',
-
+  props: {
+    nameProps: String,
+  },
 });
 </script>
 

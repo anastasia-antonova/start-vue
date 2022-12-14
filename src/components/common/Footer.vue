@@ -20,8 +20,8 @@
       </div>
     </div>
     <div class="contact">
-      <p>Тел:<span>+996 705 188 955</span></p>
-      <p>Тел:<span>+996 555 188 955</span></p>
+      <p>Тел:<span>{{number1}}</span></p>
+      <p>Тел:<span>{{number2}}</span></p>
       <p>Адрес:Бакаева 126</p>
     </div>
   </footer>
@@ -32,6 +32,11 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'Footer',
+  props: {
+    number1: String,
+    number2: String
+  }
+
 
 });
 </script>

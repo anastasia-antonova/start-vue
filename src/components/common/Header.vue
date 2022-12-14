@@ -1,14 +1,11 @@
 <template>
   <header id="header">
-    <button id="buttonSide" class="sideBarButton"  onclick="openSide()">
-      <span class="arrowSide"></span>
-    </button>
     <div class="left-content">
       <img src="@/assets/images/logo.png" alt="kj">
       <div class="phone">
         <h3>Наш телефон</h3>
-        <p class="number">+996 705 188 955</p>
-        <p class="number">+996 555 188 955</p>
+        <p class="number">{{number1}}</p>
+        <p class="number">{{number2}}</p>
         <p class="color-gray">работаем с 10:00 до 00:00</p>
       </div>
       <div class="city">
@@ -19,8 +16,8 @@
     <div class="right-content">
       <p>Отзывы</p>
       <a href="#" class="pay">Доставка и оплата</a>
-      <div class="search-div">
-        <input type="text" placeholder="search" id="textSearch" onblur="inputBlur()" onkeyup="inputFocus()" >
+      <div class="search-div" v-if="showInput" >
+        <input type="text" placeholder="search" id="textSearch" @input="$emit('input', $event.target.value)">
         <button id="closeV"  onclick="resetValue()"></button>
       </div>
     </div>
@@ -32,7 +29,21 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'Header',
+  props: {
+    showInput: Boolean,
+    number1: String,
+    number2: String
+  },
 
+  data: () => ({
+    text: "",
+  }),
+  methods: {
+    cgcgcgc() {
+      console.log('wawaw')
+      // $emit('input', text)
+    }
+  }
 });
 </script>
 
